@@ -1,6 +1,6 @@
 # database_setup.yml
 - name: configure database server
-  hosts: database_server
+  login_host: db.venkatdevops1608.online
   become: yes
   tasks:
   - name: Install SQLite
