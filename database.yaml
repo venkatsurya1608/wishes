@@ -1,0 +1,18 @@
+# database_setup.yml
+
+- hosts: database_server
+  tasks:
+    - name: Install SQLite
+      become: yes
+      apt:
+        name: sqlite3
+        state: present
+
+    - name: Create database directory
+      file:
+        path: /path/to/database/directory
+        state: directory
+        mode: '0755'
+
+    - name: Create SQLite database
+      command: sqlite3 /path/to/database/directory/birthday_wishes.db < /path/to/sqlite_script.sql

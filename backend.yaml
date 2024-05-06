@@ -1,0 +1,15 @@
+# backend_setup.yml
+
+- hosts: backend_servers
+  tasks:
+    - name: Install Python
+      become: yes
+      apt:
+        name: python3
+        state: present
+
+    - name: Copy backend script
+      copy:
+        src: /path/to/backend.py
+        dest: /home/user/backend.py
+        mode: '0755'

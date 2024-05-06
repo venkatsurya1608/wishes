@@ -1,0 +1,12 @@
+# deploy.yml
+
+- hosts: all
+  tasks:
+    - include: database_setup.yml
+      when: database_server in group_names
+
+    - include: backend_setup.yml
+      when: backend_servers in group_names
+
+    - include: frontend_setup.yml
+      when: frontend_servers in group_names

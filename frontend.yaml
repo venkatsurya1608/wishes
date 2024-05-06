@@ -1,0 +1,14 @@
+# frontend_setup.yml
+
+- hosts: frontend_servers
+  tasks:
+    - name: Create frontend directory
+      file:
+        path: /path/to/frontend/directory
+        state: directory
+        mode: '0755'
+
+    - name: Copy frontend files
+      copy:
+        src: /path/to/frontend_files/
+        dest: /path/to/frontend/directory/
