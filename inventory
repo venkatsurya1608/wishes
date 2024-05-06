@@ -1,8 +1,8 @@
-[database]
+[database_server]
 db.venkatdevops1608.online
 
-[backend]
+[backend_servers]
 backend.venkatdevops1608.online
 
-[frontend]
+[frontend_servers]
 frontend.venkatdevops1608.online
