@@ -1,6 +1,6 @@
 # database_setup.yml
-
-- hosts: database_server
+- name: configure database server
+  hosts: database_server
   tasks:
   - name: Install SQLite
     become: yes
