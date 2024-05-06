@@ -1,9 +1,9 @@
 # database_setup.yml
 - name: configure database server
   hosts: database_server
+  become: yes
   tasks:
   - name: Install SQLite
-    become: yes
     apt:
       name: sqlite3
       state: present
