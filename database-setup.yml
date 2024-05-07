@@ -1,11 +1,10 @@
 # database_setup.yml
 - name: configure database server
   hosts: localhost
-  login_host: db.venkatdevops1608.online
   become: yes
   tasks:
   - name: Install SQLite
-    apt:
+    ansible.builtin.dnf:
       name: sqlite3
       state: present
 
