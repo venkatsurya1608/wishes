@@ -1,5 +1,6 @@
 # database_setup.yml
 - name: configure database server
+  hosts: localhost
   login_host: db.venkatdevops1608.online
   become: yes
   tasks:
