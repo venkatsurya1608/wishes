@@ -1,12 +1,19 @@
-# deploy.yml
+- name: Transpose rows and columns
+  hosts: localhost
+  gather_facts: false
+  vars:
+    data:
+      - [1, 2, 3]
+      - [4, 5, 6]
+      - [7, 8, 9]
 
-- hosts: all
   tasks:
-    - include: database_setup.yml
-      when: database_server in group_names
-
-    - include: backend_setup.yml
-      when: backend_servers in group_names
-
-    - include: frontend_setup.yml
-      when: frontend_servers in group_names
+    - name: Transpose rows and columns
+      set_fact:
+        transposed_data: "{{ data | zip_longest | list }}"
+      vars:
+        # Importing the filter plugin
+        zip_longest: "{{ lookup('pipe', 'python3 -c \"from itertools import zip_longest; import sys; sys.stdout.write(','.join(map(str, [list(x) for x in zip_longest(*map(list, sys.stdin.read().strip().split('\n')))])))\"') | from_yaml }}"
+      
+    - debug:
+        var: transposed_data
